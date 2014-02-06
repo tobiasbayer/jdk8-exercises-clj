@@ -12,3 +12,6 @@
 
 (fact "it finds all even-length words"
   (find-even-length word-list) => ["in" "computer" "be" "solved" "by" "adding" "of"])
+
+(fact "it counts the number of lines in the file"
+  (count-lines file-content) => 14)

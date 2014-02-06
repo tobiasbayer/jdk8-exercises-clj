@@ -17,3 +17,6 @@
 (defn uppercase-all [coll]
   (map #(.toUpperCase %) coll))
 
+(defn count-lines [coll]
+  (count coll))
+
