@@ -25,7 +25,10 @@
   (count coll))
 
 (defn join-lines [start lines-to-join coll]
-  (reduce #(str %1 %2) (take lines-to-join (drop start coll))))
+  (->> coll
+      (drop start)
+      (take lines-to-join)
+      (reduce #(str %1 %2))))
 
 (defn longest-line-length [coll]
   (count (reduce #(if (> (count %1) (count %2))
@@ -33,11 +36,15 @@
                         %2) coll)))
 
 (defn collect-words [coll]
-  (filter #(> (count %) 0)
-          (mapcat #(clojure.string/split % #"\W+") coll)))
+  (->> coll
+       (mapcat #(clojure.string/split % #"\W+"))
+       (filter #(> (count %) 0))))
 
 (defn collect-words-lowercased-sorted [coll]
-  (sort (lowercase-all (collect-words coll))))
+  (-> coll
+      (collect-words)
+      (lowercase-all)
+      (sort)))
 
 (defn- compare-by-length-lex [x y]
   (let [cx (count x)
@@ -47,22 +54,32 @@
       (< cx cy))))
 
 (defn collect-words-lowercased-sorted-by-length-unique [coll]
-  (distinct (sort (comparator compare-by-length-lex)
-                  (lowercase-all (collect-words coll)))))
+  (->> coll
+       (collect-words)
+       (lowercase-all)
+       (sort (comparator compare-by-length-lex))
+       (distinct)))
 
 (defn group-by-word-length [coll]
   (group-by count (collect-words coll)))
 
-(defn- init-occurence-map [coll]
+(defn- init-map [coll]
   (reduce #(assoc %1 %2 0) {} coll))
 
 (defn group-by-occurences [coll]
-  (reduce #(assoc %1 %2 (+ (%1 %2) 1)) (init-occurence-map (collect-words coll)) (collect-words coll)))
+  (let [collected (collect-words coll)]
+    (reduce #(assoc %1 %2 (inc (%1 %2)))
+            (init-map collected)
+            collected)))
 
 (defn- update-values [m f & args]
   (reduce (fn [r [k v]] (assoc r k (apply f v args))) {} m))
 
+(defn- group-by-first-letter [coll]
+  (group-by #(str (.charAt % 0)) coll))
+
 (defn group-by-first-letter-and-length [coll]
-  (update-values (group-by #(str(.charAt % 0)) (collect-words coll)) group-by-word-length))
+  (update-values (group-by-first-letter (collect-words coll))
+                 group-by-word-length))
 
 
