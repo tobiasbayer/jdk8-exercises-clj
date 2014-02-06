@@ -50,3 +50,6 @@
   (distinct (sort (comparator compare-by-length-lex)
                   (lowercase-all (collect-words coll)))))
 
+(defn group-by-word-length [coll]
+  (group-by count (collect-words coll)))
+

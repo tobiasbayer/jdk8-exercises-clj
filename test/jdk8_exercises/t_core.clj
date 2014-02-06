@@ -71,3 +71,13 @@
                                                              "fairest" "glutton" "thereby" "increase" "ornament"
                                                              "abundance" "creatures" "contracted" "niggarding"
                                                              "substantial"])
+
+(fact "it groups the words by length"
+  (let [result (group-by-word-length file-content)]
+    (count (result 7)) => 6
+    (result 8)  => ["increase" "ornament"]
+    (result 9)  => ["creatures" "abundance"]
+    (result 10) => ["contracted" "niggarding"]
+    (result 11) => ["substantial"]
+    (result 12) => nil))
+
