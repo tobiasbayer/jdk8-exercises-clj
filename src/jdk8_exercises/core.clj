@@ -20,6 +20,11 @@
 (defn count-lines [coll]
   (count coll))
 
-(defn join-lines [start coll]
-  (reduce #(str %1 %2) (take 2 (drop 2 coll))))
+(defn join-lines [start lines-to-join coll]
+  (reduce #(str %1 %2) (take lines-to-join (drop start coll))))
+
+(defn longest-line-length [coll]
+  (.length (reduce #(if (> (count %1) (count %2))
+                        %1
+                        %2) coll)))
 
