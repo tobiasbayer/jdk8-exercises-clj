@@ -1,21 +1,12 @@
 (ns jdk8_exercises.core)
 
-(def word-list ["every" "problem" "in" "computer" "science"
-                "can" "be" "solved" "by" "adding" "another"
-                "level" "of" "indirection"])
-
-(def file-content
-  (with-open [rdr (clojure.java.io/reader "resources/SonnetI.txt")]
-    (doall (line-seq rdr))))
-
-
 ;; Exercise 1
 (defn print-all [coll]
   (apply println coll))
 
 ;; Exercise 2
 (defn find-even-length [coll]
-  (filter #(even? (.length %)) coll))
+  (filter #(even? (count %)) coll))
 
 ;; Exercise 3
 (defn uppercase-all [coll]
