@@ -11,6 +11,9 @@
 (defn print-all [coll]
   (apply println coll))
 
+(defn find-even-length [coll]
+  (filter #(even? (.length %)) coll))
+
 (defn uppercase-all [coll]
   (map #(.toUpperCase %) coll))
 

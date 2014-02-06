@@ -9,3 +9,6 @@
   (uppercase-all word-list) => ["EVERY" "PROBLEM" "IN" "COMPUTER" "SCIENCE"
                                  "CAN" "BE" "SOLVED" "BY" "ADDING" "ANOTHER"
                                  "LEVEL" "OF" "INDIRECTION"])
+
+(fact "it finds all even-length words"
+  (find-even-length word-list) => ["in" "computer" "be" "solved" "by" "adding" "of"])
