@@ -59,4 +59,10 @@
 (defn group-by-occurences [coll]
   (reduce #(assoc %1 %2 (+ (%1 %2) 1)) (init-occurence-map (collect-words coll)) (collect-words coll)))
 
+(defn- update-values [m f & args]
+  (reduce (fn [r [k v]] (assoc r k (apply f v args))) {} m))
+
+(defn group-by-first-letter-and-length [coll]
+  (update-values (group-by #(str(.charAt % 0)) (collect-words coll)) group-by-word-length))
+
 

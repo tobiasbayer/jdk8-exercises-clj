@@ -90,4 +90,10 @@
     (result "world")  => 3
     (result "lambda") => nil))
 
+(fact "it groups the words by first letter and length"
+  (let [result (group-by-first-letter-and-length file-content)]
+    ((result "F") 4) => ["From" "Feed"]
+    ((result "b") 2) => ["by" "be" "by"]
+    ((result "t") 3) => ["the" "thy" "thy" "thy" "too" "the" "the" "thy" "the" "the" "the"]
+    ((result "b") 6) => ["beauty" "bright"]))
 
