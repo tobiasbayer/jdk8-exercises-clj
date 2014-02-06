@@ -81,3 +81,13 @@
     (result 11) => ["substantial"]
     (result 12) => nil))
 
+(fact "it determines the number of occurences for each word"
+  (let [result (group-by-occurences file-content)]
+    (result "tender") => 2
+    (result "the")    => 6
+    (result "churl")  => 1
+    (result "thine")  => 2
+    (result "world")  => 3
+    (result "lambda") => nil))
+
+

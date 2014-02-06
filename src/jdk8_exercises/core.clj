@@ -53,3 +53,10 @@
 (defn group-by-word-length [coll]
   (group-by count (collect-words coll)))
 
+(defn- init-occurence-map [coll]
+  (reduce #(assoc %1 %2 0) {} coll))
+
+(defn group-by-occurences [coll]
+  (reduce #(assoc %1 %2 (+ (%1 %2) 1)) (init-occurence-map (collect-words coll)) (collect-words coll)))
+
+
