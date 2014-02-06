@@ -15,3 +15,6 @@
 
 (fact "it counts the number of lines in the file"
   (count-lines file-content) => 14)
+
+(fact "it joins lines 3 and 4"
+  (join-lines 2 file-content) => "But as the riper should by time decease,His tender heir might bear his memory:")

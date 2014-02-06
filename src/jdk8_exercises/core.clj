@@ -20,3 +20,6 @@
 (defn count-lines [coll]
   (count coll))
 
+(defn join-lines [start coll]
+  (reduce #(str %1 %2) (take 2 (drop 2 coll))))
+
