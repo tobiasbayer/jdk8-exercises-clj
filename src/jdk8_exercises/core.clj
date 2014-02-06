@@ -9,36 +9,44 @@
     (doall (line-seq rdr))))
 
 
+;; Exercise 1
 (defn print-all [coll]
   (apply println coll))
 
+;; Exercise 2
 (defn find-even-length [coll]
   (filter #(even? (.length %)) coll))
 
+;; Exercise 3
 (defn uppercase-all [coll]
   (map #(.toUpperCase %) coll))
 
-(defn lowercase-all [coll]
-  (map #(.toLowerCase %) coll))
-
+;; Exercise 4
 (defn count-lines [coll]
   (count coll))
 
+;; Exercise 5
 (defn join-lines [start lines-to-join coll]
   (->> coll
       (drop start)
       (take lines-to-join)
       (reduce #(str %1 %2))))
 
+;; Exercise 6
 (defn longest-line-length [coll]
   (count (reduce #(if (> (count %1) (count %2))
                         %1
                         %2) coll)))
 
+;; Exercise 7
 (defn collect-words [coll]
   (->> coll
        (mapcat #(clojure.string/split % #"\W+"))
        (filter #(> (count %) 0))))
+
+;; Exercise 8
+(defn- lowercase-all [coll]
+  (map #(.toLowerCase %) coll))
 
 (defn collect-words-lowercased-sorted [coll]
   (-> coll
@@ -46,6 +54,7 @@
       (lowercase-all)
       (sort)))
 
+;; Exercise 9
 (defn- compare-by-length-lex [x y]
   (let [cx (count x)
         cy (count y)]
@@ -60,9 +69,11 @@
        (sort (comparator compare-by-length-lex))
        (distinct)))
 
+;; Exercise 10
 (defn group-by-word-length [coll]
   (group-by count (collect-words coll)))
 
+;; Exercise 11
 (defn- init-map [coll]
   (reduce #(assoc %1 %2 0) {} coll))
 
@@ -72,6 +83,7 @@
             (init-map collected)
             collected)))
 
+;; Exercise 12
 (defn- update-values [m f & args]
   (reduce (fn [r [k v]] (assoc r k (apply f v args))) {} m))
 
