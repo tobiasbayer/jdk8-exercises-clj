@@ -39,7 +39,7 @@
                                     "else"  "this"  "glutton"  "be"  "To"  "eat"  "the"  "world"  "s"
                                     "due"  "by"  "the"  "grave"  "and"  "thee"])
 
-(fact "it  collects all word lowercased and in alphabetical order"
+(fact "it collects all words lowercased and in alphabetical order"
   (collect-words-lowercased-sorted file-content) => ["a"  "abundance"  "and"  "and"  "and"  "art"  "as"  "be"
                                         "bear"  "beauty"  "bright"  "bud"  "buriest"  "but"  "but"
                                         "by"  "by"  "churl"  "content"  "contracted"  "creatures"
@@ -56,3 +56,18 @@
                                         "this"  "thou"  "thou"  "thy"  "thy"  "thy"  "thy"  "thy"
                                         "time"  "to"  "to"  "to"  "to"  "too"  "waste"  "we"  "where"
                                         "with"  "within"  "world"  "world"  "world"])
+
+(fact "it collects all unique words lowercased and sorted by length"
+  (collect-words-lowercased-sorted-by-length-unique file-content) => [ "a" "s" "as" "be" "by" "in" "or" "st" "to" "we"
+                                                             "and" "art" "bud" "but" "die" "due" "eat" "foe" "his"
+                                                             "mak" "now" "own" "the" "thy" "too" "bear" "else"
+                                                             "eyes" "feed" "from" "fuel" "heir" "lies" "only"
+                                                             "pity" "rose" "self" "that" "thee" "this" "thou"
+                                                             "time" "with" "churl" "cruel" "flame" "fresh" "gaudy"
+                                                             "grave" "light" "might" "never" "riper" "sweet" "thine"
+                                                             "waste" "where" "world" "beauty" "bright" "desire"
+                                                             "famine" "herald" "making" "memory" "should" "spring"
+                                                             "tender" "within" "buriest" "content" "decease"
+                                                             "fairest" "glutton" "thereby" "increase" "ornament"
+                                                             "abundance" "creatures" "contracted" "niggarding"
+                                                             "substantial"])

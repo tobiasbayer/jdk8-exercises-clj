@@ -8,6 +8,7 @@
   (with-open [rdr (clojure.java.io/reader "resources/SonnetI.txt")]
     (doall (line-seq rdr))))
 
+
 (defn print-all [coll]
   (apply println coll))
 
@@ -27,14 +28,25 @@
   (reduce #(str %1 %2) (take lines-to-join (drop start coll))))
 
 (defn longest-line-length [coll]
-  (.length (reduce #(if (> (count %1) (count %2))
+  (count (reduce #(if (> (count %1) (count %2))
                         %1
                         %2) coll)))
 
 (defn collect-words [coll]
-  (filter #(> (.length %) 0)
+  (filter #(> (count %) 0)
           (mapcat #(clojure.string/split % #"\W+") coll)))
 
 (defn collect-words-lowercased-sorted [coll]
   (sort (lowercase-all (collect-words coll))))
+
+(defn- compare-by-length-lex [x y]
+  (let [cx (count x)
+        cy (count y)]
+    (if (= cx cy)
+      (< (.compareTo x y) 0)
+      (< cx cy))))
+
+(defn collect-words-lowercased-sorted-by-length-unique [coll]
+  (distinct (sort (comparator compare-by-length-lex)
+                  (lowercase-all (collect-words coll)))))
 
