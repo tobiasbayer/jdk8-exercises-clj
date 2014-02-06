@@ -28,3 +28,7 @@
                         %1
                         %2) coll)))
 
+(defn collect-words [coll]
+  (filter #(> (.length %) 0)
+          (mapcat #(clojure.string/split % #"\W+") coll)))
+
