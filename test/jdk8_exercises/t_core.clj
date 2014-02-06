@@ -2,14 +2,10 @@
   (:use midje.sweet)
   (:use [jdk8_exercises.core]))
 
-(facts "about `first-element`"
-  (fact "it normally returns the first element"
-    (first-element [1 2 3] :default) => 1
-    (first-element '(1 2 3) :default) => 1)
+(fact "it prints out all the words"
+  (print-all word-list) => anything)
 
-  ;; I'm a little unsure how Clojure types map onto the Lisp I'm used to.
-  (fact "default value is returned for empty sequences"
-    (first-element [] :default) => :default
-    (first-element '() :default) => :default
-    (first-element nil :default) => :default
-    (first-element (filter even? [1 3 5]) :default) => :default))
+(fact "it uppercases all words"
+  (uppercase-all word-list) => ["EVERY" "PROBLEM" "IN" "COMPUTER" "SCIENCE"
+                                 "CAN" "BE" "SOLVED" "BY" "ADDING" "ANOTHER"
+                                 "LEVEL" "OF" "INDIRECTION"])
