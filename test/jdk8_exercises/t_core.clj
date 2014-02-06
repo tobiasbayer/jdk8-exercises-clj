@@ -38,3 +38,21 @@
                                     "st"  "waste"  "in"  "niggarding"  "Pity"  "the"  "world"  "or"
                                     "else"  "this"  "glutton"  "be"  "To"  "eat"  "the"  "world"  "s"
                                     "due"  "by"  "the"  "grave"  "and"  "thee"])
+
+(fact "it  collects all word lowercased and in alphabetical order"
+  (collect-words-lowercased-sorted file-content) => ["a"  "abundance"  "and"  "and"  "and"  "art"  "as"  "be"
+                                        "bear"  "beauty"  "bright"  "bud"  "buriest"  "but"  "but"
+                                        "by"  "by"  "churl"  "content"  "contracted"  "creatures"
+                                        "cruel"  "decease"  "desire"  "die"  "due"  "eat"  "else"
+                                        "eyes"  "fairest"  "famine"  "feed"  "flame"  "foe"  "fresh"
+                                        "from"  "fuel"  "gaudy"  "glutton"  "grave"  "heir"  "herald"
+                                        "his"  "his"  "in"  "increase"  "lies"  "light"  "mak"
+                                        "making"  "memory"  "might"  "might"  "never"  "niggarding"
+                                        "now"  "only"  "or"  "ornament"  "own"  "own"  "pity"
+                                        "riper"  "rose"  "s"  "s"  "s"  "s"  "self"  "self"  "self"
+                                        "should"  "spring"  "st"  "st"  "substantial"  "sweet"
+                                        "tender"  "tender"  "that"  "that"  "the"  "the"  "the"
+                                        "the"  "the"  "the"  "thee"  "thereby"  "thine"  "thine"
+                                        "this"  "thou"  "thou"  "thy"  "thy"  "thy"  "thy"  "thy"
+                                        "time"  "to"  "to"  "to"  "to"  "too"  "waste"  "we"  "where"
+                                        "with"  "within"  "world"  "world"  "world"])

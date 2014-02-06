@@ -17,6 +17,9 @@
 (defn uppercase-all [coll]
   (map #(.toUpperCase %) coll))
 
+(defn lowercase-all [coll]
+  (map #(.toLowerCase %) coll))
+
 (defn count-lines [coll]
   (count coll))
 
@@ -31,4 +34,7 @@
 (defn collect-words [coll]
   (filter #(> (.length %) 0)
           (mapcat #(clojure.string/split % #"\W+") coll)))
+
+(defn collect-words-lowercased-sorted [coll]
+  (sort (lowercase-all (collect-words coll))))
 
